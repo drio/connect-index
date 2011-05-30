@@ -21,9 +21,16 @@ var foo = function(options) {
       if (exists) { 
         fs.stat(filename, function (error, stats) {
           if (stats.isDirectory()) {
-            var body = filename + " is a Directory.";
-            resp.setHeader('Content-Length', body.length);
-            resp.end(body);
+            var trimmed_path = filename.replace(__dirname + '/public', '');
+            var body = 'listing here <br>' + '\n';
+            fs.readdir(filename, function(err, list) {
+              if (err || !list) next(); // TODO
+              list.forEach(function(f) {
+                body += '<a href="' + __dirname + '/public/' + f + '">' + f + '</a>' + "\n";
+              });
+              resp.setHeader('Content-Length', body.length);
+              resp.end(body);
+            });
           } else {
             next();
           }
