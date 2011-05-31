@@ -14,21 +14,21 @@ var fs     = require('fs'),
 
 var foo = function(options) {
   return function(req, resp, next) {
-    var body = req.url;
-    var filename = path.join(__dirname + '/public' + req.url);
+    var pub_dir      = __dirname + '/public';
+    var filename     = path.join(pub_dir + req.url);
+    var trimmed_path = filename.replace(pub_dir + "/", '');
 
     path.exists(filename, function(exists) {  
       if (exists) { 
         fs.stat(filename, function (error, stats) {
           if (stats.isDirectory()) {
-            var trimmed_path = filename.replace(__dirname + '/public', '');
             var body = 'listing here <br>' + '\n';
             fs.readdir(filename, function(err, list) {
               if (err || !list) next(); // TODO
               list.forEach(function(f) {
-                body += '<a href="' + __dirname + '/public/' + f + '">' + f + '</a>' + "\n";
+                body += '<a href="' + trimmed_path + "/" + f + '">' + f + '</a><br>' + "\n";
               });
-              resp.setHeader('Content-Length', body.length);
+              resp.writeHead(200, {'Content-Type': 'text/html'}); 
               resp.end(body);
             });
           } else {
