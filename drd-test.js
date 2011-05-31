@@ -26,7 +26,10 @@ var foo = function(options) {
             fs.readdir(filename, function(err, list) {
               if (err || !list) next(); // TODO
               list.forEach(function(f) {
-                body += '<a href="' + trimmed_path + "/" + f + '">' + f + '</a><br>' + "\n";
+                var link = trimmed_path === '' 
+                           ? '/' + f 
+                           : "/" + trimmed_path + "/" + f;
+                body += '<a href="' + link + '">' + f + '</a><br>' + "\n";
               });
               resp.writeHead(200, {'Content-Type': 'text/html'}); 
               resp.end(body);
