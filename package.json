@@ -1,0 +1,19 @@
+{
+  "author": "David Rio Deiros <driodeiros@gmail.com>",
+  "name": "connect-index",
+  "description": "Connect middleware providing automatic directory listings.",
+  "version": "0.0.1",
+  "homepage": "http://github.com/drio/connect-index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drio/connect-index.git"
+  },
+  "main": "connect-index",
+  "engines": {
+    "node": ">=0.4.7"
+  },
+  "dependencies": {
+    "connect": ">= 1.4.1"
+  },
+  "devDependencies": {}
+}
