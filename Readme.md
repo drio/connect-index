@@ -9,5 +9,5 @@ Install the package via npm:
 
   $ npm install connect-index
 
-Take a look to example.js. Basically you just take connect
-to use connect-index as middleware.
+Take a look to example.js. Basically you just tell connect
+to use connect-index as middleware. 
