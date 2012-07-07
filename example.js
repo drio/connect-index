@@ -5,7 +5,7 @@ var fs     = require('fs'),
     path   = require('path');
 
 var pub_dir = __dirname + '/public';
-path.exists(pub_dir, function(exists) {
+fs.exists(pub_dir, function(exists) {
   if (exists) {
     var server = connect.createServer()
       .use(connect.logger())
