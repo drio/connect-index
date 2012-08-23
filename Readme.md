@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/drio/connect-index.png)](http://travis-ci.org/drio/connect-index)
 # connect-index - Connect middleware
 
   connect-index is a [connect](http://senchalabs.github.com/connect/) 
